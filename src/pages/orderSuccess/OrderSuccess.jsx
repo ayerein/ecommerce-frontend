@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useLocation } from "react-router-dom"
-import imgCheck  from "../../assets/imgCheck.png"
+import imgCheck  from "../../assets/imgcheck.png"
 import styles from './OrderSuccess.module.css'
 
 export const OrderSuccess = () => {
