@@ -1,5 +1,5 @@
 import { ProductCard } from "../../components/ProductCard";
-import styles from "./containerProductsCard.module.css";
+import styles from "./ContainerProductsCard.module.css";
 import { useCart } from "../../../../context/Cart/useCart";
 import { EmptyCart } from "../../components/EmptyCart";
 import { useNavigate } from "react-router-dom";
