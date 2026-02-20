@@ -10,7 +10,10 @@ export const useProduct = (id) => {
 
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`/api/products/${id}`)
+        const baseUrl = import.meta.env.VITE_API_URL || "";
+
+        const res = await fetch(`${baseUrl}/api/products/${id}`)
+        
         if (!res.ok) throw new Error("Error al obtener producto")
 
         const data = await res.json()
