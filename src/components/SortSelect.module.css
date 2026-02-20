@@ -1,0 +1,186 @@
+.containerSort {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin-right: 3vw;
+    position: relative;
+    grid-area: sortBy;
+}
+    .containerButtonSort{
+        display: flex;
+        align-items: center;
+    }
+        .pSortTitle{
+            margin-right: 15px;
+        }
+        .dropdownTrigger{
+            padding: 1vh;
+            width: 200px;
+            text-align: left;
+            border: none;
+            background: none;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+            .dropdownTrigger:hover{
+                cursor: pointer;
+            }
+            .imgSort{
+                height: 15px;
+            }
+            .imgSortMobile, .pSortTitleMobile{
+                display: none;
+            }
+    
+
+    .optionsWrapper{
+        display: none;
+        width: 200px;
+    }
+        .optionsWrapper.active {
+            display: flex;
+            background-color: var(--colorFont);
+            position: absolute;
+            top: 7.5vh;
+            width: 200px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .headerMobile {
+            display: none;
+        }
+
+        .listOptions {
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+            .pSortDesktop {
+                font-weight: bold;
+                margin-right: 10px;
+                display: none;
+            }
+                .sortButton {
+                    width: 100%;
+                    padding: 8px 15px;
+                    border: none;
+                    background: white;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    font-size: 14px;
+                    text-align: left;
+                }
+                .sortButton:hover {
+                    background: #f0f0f0;
+                }
+                .sortButton.selected {
+                    background: var(--color);
+                    color: var(--colorFont);
+                }
+
+
+@media (max-width: 768px) {
+    .containerSort{
+        margin: 0;
+    }
+        .containerButtonSort{
+            margin-right: 5vw;
+        }
+        
+            .dropdownTrigger{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                background: none;
+                box-shadow: none;
+                position: sticky;
+            }
+                .imgSortMobile{
+                    display: flex;
+                    height: 25px;
+                }
+                .imgSort{
+                    display: none;
+                }
+                .pSortMobile{
+                    display: none;
+                }
+                .pSortTitleMobile{
+                    display: flex;
+                    font-size: 1.1rem;
+                }
+
+        .overlay {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+        }
+
+        .optionsWrapper {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease;
+        }
+        .optionsWrapper.active {
+            right: 0;
+            top: -160%;
+            width: 300px;
+        }
+            .headerMobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+            }
+                .pSortTitle{
+                    display: none;
+                }
+                .btnClose {
+                    background: none;
+                    border: none;
+                    font-size: 28px;
+                    cursor: pointer;
+                }
+
+            .listOptions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+                .pSortDesktop {
+                    display: none;
+                    
+                }
+                .sortButton {
+                    width: 100%;
+                    text-align: left;
+                    padding: 12px;
+                    border-radius: 10px;
+                }
+}

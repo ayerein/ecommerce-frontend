@@ -1,0 +1,204 @@
+.btnOpenFiltersMobile{
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}
+    .btnOpenFiltersMobile:hover{
+        cursor: pointer;
+    }
+    .imgFilterMobile{
+        height: 25px;
+        margin-right: 5px;
+    }
+    .pFilterMobile{
+        font-size: 1.1rem;
+    }
+.btnCloseMobile {
+    display: none;
+}
+.overlay {
+    display: none;
+}   
+
+.containerFilters{
+    margin-top: 10vh;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 60px; 
+    width: 16vw;
+}
+
+    .containerTitleFilters{
+        display: flex;
+        align-items: center;
+        width: 90%;
+        margin: 14px 0 10px 0;
+    }
+        .imgFilters{
+            height: 20px;
+            margin-right: 6px;
+        }
+        .pFilters{
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+    .containerCategories{
+        width: 90%;
+        border-top: var(--border);
+        padding-top: 6px;
+        margin-bottom: 10px;
+    }
+        .pTitleFilters{
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .categoryItem {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 6px;
+        }
+            .categoryItem:hover{
+                cursor: pointer;
+            }
+        .categoryItem input {
+            position: absolute;
+            opacity: 0;
+        }   
+        .customRadio {
+            width: 16px;
+            height: 16px;
+            border: var(--border);
+            border-radius: 3px;
+            display: grid;
+            place-items: center;
+        }
+            .categoryItem input:checked + .customRadio {
+                background-color: var(--color);
+            }
+            .categoryItem input:checked + .customRadio::after {
+                content: "✓";
+                color: var(--colorFont);
+                font-size: .7rem;
+            }
+    
+    .containerPrice{
+        width: 90%;
+        border-top: var(--border);
+        padding-top: 6px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 13px;
+    }
+        .inputPriceFilter{
+            width: 55%;
+            border-radius: 5px;
+            margin-top: 4px;
+            height: 23px;
+            border: var(--border);
+            padding-left: 3px;
+        }
+            .inputPriceFilter:focus{
+                outline: none;
+            }
+
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        .buttonPriceFilter{
+            margin-top: 6px;
+            border: var(--border);
+            height: 23px;
+            border-radius: 5px;
+            transition: background-color .2s ease;
+        }
+            .buttonPriceFilter:hover{
+                cursor: pointer;
+                background-color: rgba(209, 209, 209, 0.575);
+            }
+
+    .btnAvailable{
+        margin-bottom: 15px;
+    }
+
+    .containerBtnClean{
+        width: 90%;
+        border-top: var(--border);
+        padding-top: 6px;
+        height: 45px;
+    }
+        .btnCleanFilters{
+            width: 100%;
+            border: var(--border);
+            height: 23px;
+            border-radius: 5px;
+            transition: background-color .2s ease;
+        }
+            .btnCleanFilters:hover{
+                cursor: pointer;
+                background-color: rgba(209, 209, 209, 0.575);
+            }
+
+
+@media (max-width: 768px) {
+    .btnOpenFiltersMobile {
+        display: flex;
+    }
+    .containerFilters {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        max-width: 300px;
+        height: 100vh;
+        background: white;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        padding: 40px 20px;
+        flex-direction: column;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+        margin: 0;
+    }
+    .containerFilters.active {
+        left: 0;
+    }
+    .btnCloseMobile {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+    }
+
+        .inputPriceFilter, .buttonPriceFilter, .btnCleanFilters{
+            height: 30px;
+            margin-top: 15px;
+        }
+}

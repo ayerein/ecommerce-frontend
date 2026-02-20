@@ -1,0 +1,18 @@
+.containerButtons{
+    width: 95%;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5vh;
+}
+    .containerButtons button{
+        border: var(--border);
+        background: none;
+        width: 15px;
+        border-radius: 5px;
+        margin: 0 5px;
+        box-shadow: var(--box-shadow);
+    }
+        .containerButtons button:hover{
+            cursor: pointer;
+            border: none;
+        }

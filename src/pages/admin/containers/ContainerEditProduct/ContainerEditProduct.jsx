@@ -1,0 +1,54 @@
+import { useState } from "react"
+import { FormProducts } from "../../components/FormProducts"
+import styles from "./ContainerEditProduct.module.css"
+import { useProducts } from "../../../../context/Product/useProducts"
+
+export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
+    const { updateProduct, deleteProduct } = useProducts()
+    const [ formData, setFormData ] = useState(selectedProduct)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const res = await fetch(`/api/products/${selectedProduct._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            ...formData,
+            precio_producto: Number(formData.precio_producto),
+            stock_producto: Number(formData.stock_producto)
+        })
+        })
+
+        const updated = await res.json()
+
+        updateProduct(updated)
+        closeModal()
+    }
+
+    const handleDelete = async () => {
+        try {
+            await deleteProduct(selectedProduct._id)
+            closeModal()
+        } catch (error) {
+            alert("Error al eliminar producto", error)
+        }
+    }
+
+    return(
+        <div className={styles.containerModal}>
+            <FormProducts 
+                formData={formData}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                closeForm={closeModal}
+            />
+            <button onClick={handleDelete}>Eliminar Producto</button>
+        </div>
+    )
+}

@@ -1,0 +1,26 @@
+.containerButtonModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .buttonAddProduct{
+        width: 23%;
+        height: 5vh;
+        border-radius: 5px;
+        border: 1px solid rgb(185, 185, 185);
+        box-shadow: 0 2px 4px rgba(47, 50, 53, 0.24), 0 2px 6px rgba(49, 52, 54, 0.192);
+                margin-bottom: 5vh;
+    }
+    .buttonAddProduct:hover{
+        cursor: pointer;
+        border: none;
+    }
+
+.containerForm{
+    background-color: rgba(34, 34, 34, 0.7);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}

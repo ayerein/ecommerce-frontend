@@ -1,0 +1,57 @@
+.containerButton{
+    width: 90%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: popIn 0.4s ease-out forwards;
+}
+    .buttonQuantity{
+        background-color: var(--color);
+        height: 100%;
+        width: 25%;
+        border: none;
+        color: var(--colorFont);
+        font-size: 1.2rem;
+        font-weight: 500;
+        transition: background-color .3s ease;
+    }
+        .buttonQuantity:hover{
+            cursor: pointer;
+            background-color: var(--colorHoverButton);
+        }
+
+    .buttonLeft{
+        border-radius: 5px 0 0 5px;
+    }
+    .buttonRight{
+        border-radius: 0 5px 5px 0;
+    }
+        .buttonRight:disabled{
+            background-color: var(--colorPlaceholder);
+        }
+    
+    .pQuantity{
+        border: var(--border);
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}

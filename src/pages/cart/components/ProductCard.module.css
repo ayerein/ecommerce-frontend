@@ -1,0 +1,88 @@
+.productCard{
+    display: grid;
+    grid-template-columns: 1fr 6fr 2fr 1fr 2fr .5fr;
+    height: 15vh;
+    width: 100%;
+    border-bottom: var(--border);
+    margin-top: 2vh;
+}
+
+    .containerButtonQuantity, .containerPrice, .containerImg, .containerHeightButton, .totalProductPrice, .containerButtonDelete{
+        display: flex;
+        align-items: center;
+    }
+        .imgProductCard{
+            width: 90%;
+            height: 70%;
+        }
+
+        .containerHeightButton{
+            height: 50%;
+            width: 100%;
+        }
+
+    .totalProductPrice{
+        justify-content: end;
+    }
+
+    .containerName{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .containerButtonDelete{
+        width: 100%;
+        align-items: center;
+        justify-content: end;
+    }
+        .buttonDeleteProduct{
+            border: none;
+        }
+            .buttonDeleteProduct:hover{
+                cursor: pointer;
+            }
+            .imgDelete{
+                height: 15px;
+            }
+        .nombreProductCard{
+            color: rgb(34, 34, 34);
+        }
+
+@media (max-width: 768px) {
+    .productCard{
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        grid-row: 1fr 1fr;
+        grid-template-areas: "img titleProduct"
+                                "img priceUnits";
+    }
+        .containerImg{
+            grid-area: img;
+        }
+        .containerName{
+            grid-area: titleProduct;
+            width: 80%;
+            padding-left: 5px;
+        }
+        .containerPrice{
+            grid-area: priceUnits;
+            padding-left: 5px;
+        }
+        .containerButtonQuantity{
+            grid-area: priceUnits;
+            width: 50%;
+            margin-left: 50%;
+        }
+            .containerHeightButton{
+                height: 50px;
+            }
+        .containerButtonDelete{
+            grid-area: titleProduct;
+            width: 90%;
+        }
+        .totalProductPrice{
+            display: none;
+        }
+}
