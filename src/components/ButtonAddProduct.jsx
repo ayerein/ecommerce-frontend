@@ -1,5 +1,5 @@
 import { useCart } from "../context/Cart/useCart"
-import styles from "./buttonAddProduct.module.css"
+import styles from "./ButtonAddProduct.module.css"
 
 export const ButtonAddProduct = ({ id }) => {
     const { addToCart } = useCart()
