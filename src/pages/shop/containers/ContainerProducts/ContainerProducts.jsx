@@ -3,12 +3,13 @@ import { useProducts } from "../../../../context/Product/useProducts"
 import { ProductCard } from "../../components/ProductCard/ProductCard"
 import imgResults  from "../../../../assets/imgResults.png"
 import styles from "./ContainerProducts.module.css"
+import { ProductSkeleton } from "../../components/ProductCard/ProductSkeleton"
 
 export const ContainerProducts = () => {
     const { products, loading } = useProducts()
 
     if (loading && products.length === 0) {
-        return <Loader />;
+        return <ProductSkeleton />
     }
 
     if (!Array.isArray(products)) {
