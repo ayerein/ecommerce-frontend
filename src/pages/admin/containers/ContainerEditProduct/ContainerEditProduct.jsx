@@ -4,7 +4,7 @@ import styles from "./ContainerEditProduct.module.css"
 import { useProducts } from "../../../../context/Product/useProducts"
 
 export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
-    const { updateProduct } = useProducts()
+    const { refreshProducts } = useProducts()
     const [ formData, setFormData ] = useState(selectedProduct)
 
     const handleChange = (e) => {
@@ -26,10 +26,10 @@ export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
             })
             })
 
-            const updated = await res.json()
-
-            updateProduct(updated)
-            closeModal()
+            if (res.ok) {
+                await refreshProducts() 
+                closeModal()
+            }
         } catch (error) {
             console.error("Error:", error);
         }
