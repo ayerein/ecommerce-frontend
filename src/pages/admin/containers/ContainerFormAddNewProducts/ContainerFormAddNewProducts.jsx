@@ -4,7 +4,7 @@ import styles from "./ContainerFormAddNewProducts.module.css"
 import { useProducts } from "../../../../context/Product/useProducts"
 
 export const ContainerFormAddNewProducts = () => {
-    const { addProduct } = useProducts()
+    const { refreshProducts } = useProducts()
     
     const [ formData, setFormData ] = useState({
         nombre_producto: "",
@@ -34,29 +34,30 @@ export const ContainerFormAddNewProducts = () => {
                 "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                ...formData,
-                precio_producto: Number(formData.precio_producto),
-                stock_producto: Number(formData.stock_producto)
+                    ...formData,
+                    precio_producto: Number(formData.precio_producto),
+                    stock_producto: Number(formData.stock_producto)
+                })
             })
-        })
 
-        if (!response.ok) {
-            throw new Error("Error al crear el producto")
-        }
+            if (!response.ok) {
+                throw new Error("Error al crear el producto")
+            }
 
-        const newProduct = await response.json()
+            if (response.ok) {
+                await refreshProducts()
+                setForm(false)
+                setFormData({
+                    nombre_producto: "",
+                    marca_producto: "",
+                    descripcion_producto: "",
+                    precio_producto: "",
+                    img_producto: "",
+                    nombre_categoria: "",
+                    stock_producto: 0
+                })
+            }
 
-        addProduct(newProduct)
-
-        setFormData({
-            nombre_producto: "",
-            marca_producto: "",
-            descripcion_producto: "",
-            precio_producto: "",
-            img_producto: "",
-            nombre_categoria: "",
-            stock_producto: 0
-        })
         } catch (error) {
             console.error(error)
             alert("Hubo un error")
