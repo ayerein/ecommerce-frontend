@@ -4,7 +4,7 @@ import styles from "./ContainerEditProduct.module.css"
 import { useProducts } from "../../../../context/Product/useProducts"
 
 export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
-    const { updateProduct, deleteProduct } = useProducts()
+    const { updateProduct } = useProducts()
     const [ formData, setFormData ] = useState(selectedProduct)
 
     const handleChange = (e) => {
@@ -14,29 +14,24 @@ export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const res = await fetch(`/api/products/${selectedProduct._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            ...formData,
-            precio_producto: Number(formData.precio_producto),
-            stock_producto: Number(formData.stock_producto)
-        })
-        })
-
-        const updated = await res.json()
-
-        updateProduct(updated)
-        closeModal()
-    }
-
-    const handleDelete = async () => {
         try {
-            await deleteProduct(selectedProduct._id)
+            const baseUrl = import.meta.env.VITE_API_URL || "";
+            const res = await fetch(`${baseUrl}/api/products/${selectedProduct._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                ...formData,
+                precio_producto: Number(formData.precio_producto),
+                stock_producto: Number(formData.stock_producto)
+            })
+            })
+
+            const updated = await res.json()
+
+            updateProduct(updated)
             closeModal()
         } catch (error) {
-            alert("Error al eliminar producto", error)
+            console.error("Error:", error);
         }
     }
 
@@ -48,7 +43,6 @@ export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
                 onSubmit={handleSubmit}
                 closeForm={closeModal}
             />
-            <button onClick={handleDelete}>Eliminar Producto</button>
         </div>
     )
 }
