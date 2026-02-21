@@ -27,7 +27,8 @@ export const ContainerFormAddNewProducts = () => {
         e.preventDefault()
 
         try {
-            const response = await fetch("/api/products", {
+            const baseUrl = import.meta.env.VITE_API_URL || "";
+            const response = await fetch(`${baseUrl}/api/products`, {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json"
