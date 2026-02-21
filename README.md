@@ -1,16 +1,36 @@
-# React + Vite
+# 💻 Ecommerce Frontend - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es la interfaz de usuario de mi proyecto Ecommerce Full Stack. Está construida enfocándose en la modularidad, la experiencia de usuario y el rendimiento.
 
-Currently, two official plugins are available:
+**🔗 [Ver la tienda en vivo](https://ecommerce-ayerein.netlify.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🛠️ Stack Tecnológico
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **React (Vite):** Framework principal para una experiencia de desarrollo rápida.
+* **Context API:** Gestión de estado global para el flujo de compra y la sincronización de productos.
+* **CSS Modules:** Estilos encapsulados por componente para evitar colisiones y facilitar el mantenimiento.
+* **Hooks Personalizados:** Abstracción de lógica (ej. `useProductModal`, `useProducts`).
+* **React Router DOM:** Manejo de rutas protegidas y navegación SPA.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Decisiones Técnicas y UX
+
+* **Skeleton Loaders:** Implementé pantallas de carga personalizadas para mejorar la percepción de velocidad (Perceived Performance) mientras se obtienen los datos del backend.
+* **Custom Hooks:** Toda la lógica de negocio está separada de los componentes visuales, lo que hace que el código sea testeable y reutilizable.
+* **Responsive Design:** Diseño "Mobile First" asegurando que el carrito y los filtros sean 100% funcionales en cualquier dispositivo.
+* **Validación de Formularios:** Gestión controlada de inputs en el panel de administración para el alta y edición de productos.
+
+---
+
+## 📁 Estructura de Carpetas
+
+```text
+src/
+ ├── components/     # Componentes reutilizables (Botones, Skeletons, Formuarios)
+ ├── context/        # Proveedores de estado (Cart, Products)
+ ├── hooks/          # Lógica personalizada (useProducts, useProductModal)
+ ├── layouts/        # Estructuras globales (NavBar)
+ └── pages/          # Vistas principales (Shop, Admin, Cart, OrderSuccess)
