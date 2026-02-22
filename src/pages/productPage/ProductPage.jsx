@@ -4,7 +4,7 @@ import styles from "./ProductPage.module.css"
 import { ButtonQuantity } from "../../components/ButtonQuantity"
 import { ButtonAddProduct } from "../../components/ButtonAddProduct"
 import { useCart } from "../../context/Cart/useCart"
-import { Loader } from "../../components/Loader"
+import { ProductDetailSkeleton } from "./ProductDetailSkeleton"
 
 export const ProductPage = () => {
     const { id } = useParams()
@@ -17,11 +17,13 @@ export const ProductPage = () => {
 
     const quantity = itemInCart ? itemInCart.quantity : 0
 
-    if (loading) return <Loader />
     if (error) return <p>Error</p>
 
     return (
         <div className={styles.containerProductPage}>
+            { loading ? 
+            <ProductDetailSkeleton />
+            :
             <div className={styles.containerDetailProduct}>
                 <div className={styles.containerImgDetail}>
                     <img src={product.img_producto} alt={product.descripcion_producto} className={styles.imgProduct}/>
@@ -39,6 +41,7 @@ export const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            }
         </div>
   )
 }
