@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 # 💻 Ecommerce Frontend - React
 
 Esta es la interfaz de usuario de mi proyecto Ecommerce Full Stack. Está construida enfocándose en la modularidad, la experiencia de usuario y el rendimiento.
@@ -37,4 +34,3 @@ src/
  ├── hooks/          # Lógica personalizada (useProducts, useProductModal)
  ├── layouts/        # Estructuras globales (NavBar)
  └── pages/          # Vistas principales (Shop, Admin, Cart, OrderSuccess)
->>>>>>> 9664f2957424006842bdaaa68a47e9eaba314174
