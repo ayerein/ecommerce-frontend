@@ -93,11 +93,15 @@ export const FormProducts = ({ onSubmit, formData, onChange, handleDelete, close
                 </div>
                 
                 <div className={styles.containerButtonSubmit}>
-                    <button type="submit" className={styles.buttonSubmit}>Guardar</button>
+                    <button type="submit" className={styles.buttonSubmit}>
+                        {formData._id ? "Actualizar Producto" : "Crear Producto"}
+                    </button>
                 </div>
+                {formData._id && (
                 <div className={styles.containerButtondelete}>
                     <button type="button" className={styles.buttonDelete} onClick={() => handleDelete(formData._id)}>Eliminar Producto</button>
                 </div>
+                )}
             </form>
         </div>
     )
