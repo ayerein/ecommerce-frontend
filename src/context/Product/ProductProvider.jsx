@@ -10,7 +10,7 @@ const initialFiltersShop = {
     inStock: true,
     limit: 8,
     page: 1,
-};
+}
 const initialFiltersAdmin = { 
     search: "", 
     category: "", 
@@ -23,13 +23,13 @@ const initialFiltersAdmin = {
 }
 
 export function ProductProvider({ children }) {
-    const path = window.location.pathname;
+    const path = window.location.pathname
 
-    const [ products, setProducts ] = useState([]);
-    const [ filters, setFilters ] = useState(path.includes("/admin") ? initialFiltersAdmin : initialFiltersShop);
-    const [ totalPages, setTotalPages ] = useState(1);
-    const [ categories, setCategories ] = useState([]);
-    const [ loading, setLoading ] = useState(false);
+    const [ products, setProducts ] = useState([])
+    const [ filters, setFilters ] = useState(path.includes("/admin") ? initialFiltersAdmin : initialFiltersShop)
+    const [ totalPages, setTotalPages ] = useState(1)
+    const [ categories, setCategories ] = useState([])
+    const [ loading, setLoading ] = useState(false)
     const [ error, setError ] = useState(null)
 
     const getProducts = useCallback(async (filters, append = false) => {
@@ -37,7 +37,7 @@ export function ProductProvider({ children }) {
         setError(null)
 
         try {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams()
 
         Object.entries(filters).forEach(([key, value]) => {
             if (value !== "" && value !== undefined && value !== null) {
@@ -45,8 +45,8 @@ export function ProductProvider({ children }) {
             }
         })
 
-        const baseUrl = import.meta.env.VITE_API_URL || "";
-        const url = `${baseUrl}/api/products?${params.toString()}`;
+        const baseUrl = import.meta.env.VITE_API_URL || ""
+        const url = `${baseUrl}/api/products?${params.toString()}`
 
         const res = await fetch(url)
         
@@ -61,7 +61,7 @@ export function ProductProvider({ children }) {
         } else {
             setProducts(prev => append ? [...prev, ...data.docs] : data.docs)
         }
-        setTotalPages(data.totalPages);
+        setTotalPages(data.totalPages)
 
         } catch (err) {
         console.error(err)
@@ -78,7 +78,7 @@ export function ProductProvider({ children }) {
             [key]: value,
             page: key === "page" ? value : 1,
         }));
-    }, []);
+    }, [])
     
     const resetFilters = useCallback((mode) => {
         setFilters(prev => {
@@ -89,12 +89,12 @@ export function ProductProvider({ children }) {
                 search: prev.search
             }
         });
-    }, []);
+    }, [])
 
     useEffect(() => {
         const isAppend = filters.page > 1;
         getProducts(filters, isAppend);
-    }, [filters, getProducts]);
+    }, [filters, getProducts])
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -111,7 +111,7 @@ export function ProductProvider({ children }) {
             }
         };
         fetchCategories();
-    }, []);
+    }, [])
 
     const refreshProducts = useCallback(() => {
         getProducts(filters, false)
@@ -133,6 +133,6 @@ export function ProductProvider({ children }) {
         >
         {children}
         </ProductContext.Provider>
-    );
+    )
     
 }

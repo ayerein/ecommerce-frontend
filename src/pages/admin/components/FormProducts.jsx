@@ -1,6 +1,6 @@
 import styles from "./FormProducts.module.css"
 
-export const FormProducts = ({ onSubmit, formData, onChange, closeForm }) => {
+export const FormProducts = ({ onSubmit, formData, onChange, handleDelete, closeForm }) => {
     return(
         <div className={styles.containerForm}>
 
@@ -94,6 +94,9 @@ export const FormProducts = ({ onSubmit, formData, onChange, closeForm }) => {
                 
                 <div className={styles.containerButtonSubmit}>
                     <button type="submit" className={styles.buttonSubmit}>Guardar</button>
+                </div>
+                <div className={styles.containerButtondelete}>
+                    <button type="button" className={styles.buttonDelete} onClick={() => handleDelete(formData._id)}>Eliminar Producto</button>
                 </div>
             </form>
         </div>

@@ -80,14 +80,12 @@ export function CartProvider ({ children }) {
         try {
             const baseUrl = import.meta.env.VITE_API_URL || "";
 
-            const cartId = localStorage.getItem("cartId")
-
             const res = await fetch(`${baseUrl}/api/orders`, {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ cartId })
+                credentials: "include"
             })
 
             const data = await res.json()
@@ -107,13 +105,13 @@ export function CartProvider ({ children }) {
     }, [refreshProducts])
 
     const totalPrice = useMemo(() => {
-        return cart.items.reduce((acc, item) => {
+        return cart?.items.reduce((acc, item) => {
             return acc + (item.product.precio_producto * item.quantity)
         }, 0)
     }, [cart])
 
     const totalUnits = useMemo(() => {
-        return cart.items.reduce((acc, item) => acc + item.quantity, 0)
+        return cart?.items.reduce((acc, item) => acc + item.quantity, 0)
     }, [cart])
 
     useEffect(() => {
@@ -125,20 +123,23 @@ export function CartProvider ({ children }) {
         }
 
         const fetchCart = async () => {
-        try {
-            const baseUrl = import.meta.env.VITE_API_URL || "";
-            const res = await fetch(`${baseUrl}/api/cart/${cartId}`)
-            if (!res.ok) {
-                throw new Error(data.message)
+            try {
+                const baseUrl = import.meta.env.VITE_API_URL || "";
+                const res = await fetch(`${baseUrl}/api/cart/${cartId}`)
+                if (!res.ok) {
+                    if (res.status === 404) {
+                        localStorage.removeItem("cartId")
+                        setCart({ items: [] })
+                    }
+                    return
+                }
+                const data = await res.json()
+                setCart(data)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setLoading(false)
             }
-            const data = await res.json()
-            setCart(data)
-        } catch (error) {
-            console.error(error)
-            localStorage.removeItem("cartId")
-        } finally {
-            setLoading(false)
-        }
         }
 
         fetchCart()

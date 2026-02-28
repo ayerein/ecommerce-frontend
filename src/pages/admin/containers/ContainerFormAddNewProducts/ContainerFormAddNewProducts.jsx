@@ -33,6 +33,7 @@ export const ContainerFormAddNewProducts = () => {
                 headers: {
                 "Content-Type": "application/json"
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     ...formData,
                     precio_producto: Number(formData.precio_producto),

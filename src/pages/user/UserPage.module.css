@@ -1,0 +1,22 @@
+.containerUserPage{
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .pTitleUserPage{
+        width: 50%;
+        margin-bottom: 3vh;
+        font-size: 1.4rem;
+    }
+    .containerData{
+        box-shadow: var(--box-shadow);
+        height: 60%;
+        width: 50%;
+        padding: 5vh 5vw;
+    }
+        .containerData p{
+            line-height: 1.5rem;
+        }

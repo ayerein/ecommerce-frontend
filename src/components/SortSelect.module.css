@@ -78,7 +78,7 @@
                     text-align: left;
                 }
                 .sortButton:hover {
-                    background: #f0f0f0;
+                    background: var(--backgroundSelection);
                 }
                 .sortButton.selected {
                     background: var(--color);

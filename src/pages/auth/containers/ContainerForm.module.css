@@ -1,0 +1,37 @@
+.formAuth{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vh;
+}
+    .formAuth input{
+        width: 40vw;
+        height: 35px;
+        padding: 0 10px;
+        border: var(--border);
+        border-radius: 10px;
+    }
+        .formAuth input:focus-visible {
+            outline: none;
+        }
+    .formAuth label{
+        font-weight: 600;
+        height: 30px;
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 5px;
+    }
+
+    .btnAuth{
+        margin-top: 20px;
+        height: 35px;
+        border: none;
+        background: var(--color);
+        color: var(--colorFont);
+        border-radius: 10px;
+        font-size: 1.1rem;
+        transition: background-color .3s ease;
+    }
+        .btnAuth:hover{
+            cursor: pointer;
+            background: var(--colorHoverButton);
+        }

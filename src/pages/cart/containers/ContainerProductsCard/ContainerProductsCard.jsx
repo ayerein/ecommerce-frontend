@@ -1,21 +1,29 @@
-import { ProductCard } from "../../components/ProductCard";
-import styles from "./ContainerProductsCard.module.css";
-import { useCart } from "../../../../context/Cart/useCart";
-import { EmptyCart } from "../../components/EmptyCart";
-import { useNavigate } from "react-router-dom";
+import { ProductCard } from "../../components/ProductCard"
+import styles from "./ContainerProductsCard.module.css"
+import { useCart } from "../../../../context/Cart/useCart"
+import { useUser } from "../../../../context/User/useUser"
+import { EmptyCart } from "../../components/EmptyCart"
+import { useNavigate } from "react-router-dom"
+
 
 export const ContainerProductsCard = () => {
     const { cart, totalPrice, clearCart, createOrder } = useCart()
-    const navigate = useNavigate();
+    const { user, loading } = useUser()
+    
+    const navigate = useNavigate()
 
     const handleCheckout = async () => {
-        try {
-            const orderData = await createOrder()
-            navigate("/order-success", {
-            state: orderData
-            })
-        } catch (err) {
-            alert(err.message)
+        if (!user) {
+            navigate('/auth')
+        } else {
+            try {
+                const orderData = await createOrder()
+                navigate("/order-success", {
+                state: orderData
+                })
+            } catch (err) {
+                alert(err.message)
+            }
         }
     }
 
@@ -65,7 +73,7 @@ export const ContainerProductsCard = () => {
                     <p>${totalPrice}</p>
                 </div>
                 <div className={styles.containerButtonCheckout}>
-                    <button  onClick={handleCheckout} className={styles.buttonCheckout}>Finalizar Compra</button>
+                    <button onClick={handleCheckout} disabled={loading} className={styles.buttonCheckout}>{loading ? "Verificando..." : "Finalizar Compra"}</button>
                 </div>
             </div>
         </div>

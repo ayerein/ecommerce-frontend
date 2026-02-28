@@ -18,36 +18,53 @@
             font-weight: 700;
             color: var(--colorFont);
         }
-    
-    .containerCart{
-        margin-right: 2vw;
-        height: 90%;
-        width: 45px;
+    .containerMenu{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        position: relative;
     }
-        .pTotalUnits{
-            color: var(--colorFont);
-            font-size: .7rem;
-            position: absolute;
-            top: 0;
-            left: 10px;
-            background-color: rgba(202, 83, 83, 0.822);
-            border-radius: 15px;
-            width: 20px;
-            text-align: center;
-        }   
-        .imgCart{
-            height: 23px;
+        .containerAuth{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 1vw;
         }
-        .pCart{
-            color: var(--colorFont);
-            font-size: .8rem;
+            .imgAuth{
+                height: 23px;
+            }
+            .pAuth{
+                color: var(--colorFont);
+                font-size: .8rem;
+            }
+        .containerCart{
+            margin-right: 2vw;
+            height: 90%;
+            width: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
         }
+            .pTotalUnits{
+                color: var(--colorFont);
+                font-size: .7rem;
+                position: absolute;
+                top: -10px;
+                left: 10px;
+                background-color: rgba(202, 83, 83, 0.822);
+                border-radius: 15px;
+                width: 20px;
+                text-align: center;
+            }   
+            .imgCart{
+                height: 23px;
+            }
+            .pCart{
+                color: var(--colorFont);
+                font-size: .8rem;
+            }
 
 @media (max-width: 768px) {
     .containerSearchBar{
@@ -85,6 +102,7 @@
             padding-right: 30px;
         }
             .pTotalUnits{
-                display: none;
+                right: 33px;
+                left: auto;
             }
 }

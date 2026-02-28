@@ -9,13 +9,15 @@ export const ContainerProducts = () => {
     const { products, loading } = useProducts()
 
     if (!Array.isArray(products)) {
-    return <p>Error cargando productos</p>
+        return <p>Error cargando productos</p>
     }
+
+    const isInitialLoading = loading && products.length === 0
 
     return(
         <>
         <div className={styles.containerProducts}>
-            { loading ? (
+            { isInitialLoading ? (
                 Array.from({ length: 8 }).map((_, index) => (
                     <ProductSkeleton key={index} />
                 ))
@@ -27,7 +29,8 @@ export const ContainerProducts = () => {
                 </div>
             )
             : (
-                products.map(product => (
+                <>
+                {products.map(product => (
                     <ProductCard 
                     key={product._id}
                     id={product._id}
@@ -37,12 +40,16 @@ export const ContainerProducts = () => {
                     img={product.img_producto}
                     descripcion={product.descripcion_producto}
                     />
-                ))
+                ))}
+
+                {loading && products.length > 0 && (
+                    Array.from({ length: 8 }).map((_, index) => (
+                        <ProductSkeleton key={index} />
+                    ))
+                )}
+                </>
             )}
         </div>
-        {loading && products.length > 0 && (
-            <Loader />
-        )}
         </>
     )
 }
