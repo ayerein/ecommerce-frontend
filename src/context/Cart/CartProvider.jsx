@@ -19,6 +19,7 @@ export function CartProvider ({ children }) {
                 headers: {
                     "Content-Type": "application/json"
                 },
+                credentials: "include",
                 body: JSON.stringify({
                 cartId,
                 productId,
@@ -33,7 +34,7 @@ export function CartProvider ({ children }) {
             localStorage.setItem("cartId", data._id)
             setCart(data)
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Error:", error)
         }
     }, [])
 
