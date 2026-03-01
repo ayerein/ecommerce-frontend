@@ -95,7 +95,6 @@ export function CartProvider ({ children }) {
                 throw new Error(data.message)
             }
 
-            localStorage.removeItem("cartId")
             setCart({ items: [] })
             await refreshProducts()
 
