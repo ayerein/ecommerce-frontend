@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FormProducts } from "../../components/FormProducts"
+import { FormProducts } from "../../components/FormProducts/FormProducts"
 import styles from "./ContainerFormAddNewProducts.module.css"
 import { useProducts } from "../../../../context/Product/useProducts"
 

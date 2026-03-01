@@ -1,4 +1,4 @@
-import { useProducts } from '../../../context/Product/useProducts'
+import { useProducts } from '../../../../context/Product/useProducts'
 import styles from './Filters.module.css'
 
 export const Filters = () => {

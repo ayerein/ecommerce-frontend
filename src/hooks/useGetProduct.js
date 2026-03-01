@@ -10,7 +10,7 @@ export const useProduct = (id) => {
 
     const fetchProduct = async () => {
       try {
-        const baseUrl = import.meta.env.VITE_API_URL || "";
+        const baseUrl = import.meta.env.VITE_API_URL || ""
 
         const res = await fetch(`${baseUrl}/api/products/${id}`)
         

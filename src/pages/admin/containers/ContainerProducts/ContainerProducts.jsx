@@ -1,6 +1,6 @@
 import { useProducts } from "../../../../context/Product/useProducts"
-import { AdminCardSkeleton } from "../../components/AdminCardSkeleton"
-import { ProductCard } from "../../components/ProductCard"
+import { AdminCardSkeleton } from "../../components/SkeletonLoading/AdminCardSkeleton"
+import { ProductCard } from "../../components/ProductCard/ProductCard"
 import styles from "./ContainerProducts.module.css"
 
 export const ContainerProducts = ({ openModal }) => {

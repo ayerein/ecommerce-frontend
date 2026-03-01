@@ -2,7 +2,7 @@
     width: 95%;
     display: flex;
     justify-content: end;
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
 }
     .containerButtons button{
         border: var(--border);
