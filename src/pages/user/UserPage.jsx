@@ -1,10 +1,12 @@
 import { useUser } from '../../context/User/useUser'
+import { useOrders } from '../../hooks/useOrders'
 import styles from './UserPage.module.css'
 
 export const UserPage = () => {
-    const { user, loading } = useUser()
+    const { user, loading: loadingUser } = useUser()
+    const { orders} = useOrders()
 
-    if (loading) {
+    if (loadingUser) {
         return <div className={styles.loader}>Cargando perfil...</div>
     }
 
@@ -24,6 +26,22 @@ export const UserPage = () => {
                 <p>Nombre: {user.first_name} {user.last_name}</p>
                 <p>Email: {user.email}</p>
                 <p>Edad: {user.age}</p>
+            </div>
+            <div className={styles.containerOrders}>
+                <p>Mis ordenes</p>
+                {
+                    !orders ? 
+                    <p>Aún no tienes ordenes</p>
+                    :
+                    orders.map(order => (
+                        <div className={styles.containerOrder} key={order._id}>
+                            <p>ID de la orden: {order._id}</p>
+                            <p>Fecha: {new Date(order.createdAt).toLocaleDateString()}</p>
+                            <p>Items: {order.items.length}</p>
+                            <p>Estado: {order.status}</p>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     )

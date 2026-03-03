@@ -8,6 +8,7 @@ import { ContainerForm } from "./containers/ContainerForm"
 
 export const AuthPage = () => {
     const [ isLogin, setIsLogin ] = useState(true)
+    const [ loading, setLoading ] = useState(false)
     const [ formData, setFormData ] = useState({
         first_name: "",
         last_name: "",
@@ -26,22 +27,28 @@ export const AuthPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
         setError(null)
-
-        if (isLogin) {
-            const result = await login(formData.email, formData.password)
-            if (result.success) {
-                navigate("/")
+        try {
+            if (isLogin) {
+                const result = await login(formData.email, formData.password)
+                if (result.success) {
+                    navigate("/")
+                } else {
+                    setError(result.message)
+                }
             } else {
-                setError(result.message)
+                const result = await register(formData)
+                if (result.success) {
+                    navigate("/")
+                } else {
+                    setError(result.message)
+                }
             }
-        } else {
-            const result = await register(formData)
-            if (result.success) {
-                navigate("/")
-            } else {
-                setError(result.message)
-            }
+        } catch {
+            setError("Error de conexión con el servidor")
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -51,7 +58,7 @@ export const AuthPage = () => {
                 <img src={iconUser} alt="iniciar sesión" className={styles.imgUser} />
                 <p className={styles.pTitleAuth}>{isLogin ? "Iniciar Sesión con tu cuenta" : "Crear Cuenta"}</p>
                 
-                <ContainerForm isLogin={isLogin} formData={formData} handleSubmit={handleSubmit} handleChange={handleChange} error={error} />
+                <ContainerForm loading={loading} isLogin={isLogin} formData={formData} handleSubmit={handleSubmit} handleChange={handleChange} error={error} />
 
                 <p onClick={() => setIsLogin(!isLogin)} className={styles.pIsLogin}>
                     {isLogin ? "Regístrate aquí" : "Inicia sesión"}

@@ -6,7 +6,6 @@ export const ContainerOrders = () => {
     const { orders, loading } = useOrders()
 
     if (loading) return <Loader />
-    console.log(orders)
     return(
         <div className={styles.ContainerOrders}>
             {

@@ -1,6 +1,7 @@
 import styles from './ContainerForm.module.css'
+import { LoaderAuth } from '../components/LoaderAuth.jsx'
 
-export const ContainerForm = ({ isLogin, formData, handleSubmit, handleChange, error }) => {
+export const ContainerForm = ({ loading, isLogin, formData, handleSubmit, handleChange, error }) => {
     return(
         <form onSubmit={handleSubmit} className={styles.formAuth}>
             {!isLogin && (
@@ -20,7 +21,12 @@ export const ContainerForm = ({ isLogin, formData, handleSubmit, handleChange, e
             <input type="password" name="password" id="password" placeholder="Contraseña" value={formData.password} onChange={handleChange} required />
             {error && <p>{error}</p>}
             <button type="submit" className={styles.btnAuth}>
-                {isLogin ? "Ingresar" : "Crear cuenta"}
+                {
+                    loading ? 
+                    <LoaderAuth />
+                    :
+                    isLogin ? "Ingresar" : "Crear cuenta"
+                }
             </button>
 
         </form>
