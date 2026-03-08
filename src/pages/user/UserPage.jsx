@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import { useUser } from '../../context/User/useUser'
-import { useOrders } from '../../hooks/useOrders'
+import { ContainerUserData } from './ContainerUserData/ContainerUserData'
+import { ContainerUserOrders } from './ContainerUserOrders/ContainerUserOrders'
 import styles from './UserPage.module.css'
 
 export const UserPage = () => {
+    const [ section, setSection ] = useState('UserData')
     const { user, loading: loadingUser } = useUser()
-    const { orders} = useOrders()
+    
 
     if (loadingUser) {
         return <div className={styles.loader}>Cargando perfil...</div>
@@ -18,31 +21,25 @@ export const UserPage = () => {
             </div>
         )
     }
-
+    
     return(
         <div className={styles.containerUserPage}>
-            <p className={styles.pTitleUserPage}>Mi cuenta</p>
-            <div className={styles.containerData}>
-                <p>Nombre: {user.first_name} {user.last_name}</p>
-                <p>Email: {user.email}</p>
-                <p>Edad: {user.age}</p>
+            <div className={styles.containerOptions}>
+                <p className={styles.pTitleName}>¡Hola {user.first_name}!</p>
+                <button onClick={()=>setSection('UserData')} className={`${styles.buttonOptions} ${section === 'UserData' ? styles.activeButton : ''}`}>Mis datos</button>
+                <button onClick={()=>setSection('UserOrders')} className={`${styles.buttonOptions} ${section === 'UserOrders' ? styles.activeButton : ''}`}>Mis pedidos</button>
+                <button className={styles.buttonOptions}>Cerrar Sesión</button>
             </div>
-            <div className={styles.containerOrders}>
-                <p>Mis ordenes</p>
+            <div className={styles.containerData}>
                 {
-                    !orders ? 
-                    <p>Aún no tienes ordenes</p>
-                    :
-                    orders.map(order => (
-                        <div className={styles.containerOrder} key={order._id}>
-                            <p>ID de la orden: {order._id}</p>
-                            <p>Fecha: {new Date(order.createdAt).toLocaleDateString()}</p>
-                            <p>Items: {order.items.length}</p>
-                            <p>Estado: {order.status}</p>
-                        </div>
-                    ))
+                    section === 'UserData' && <ContainerUserData />
+                }
+                {
+                    section === 'UserOrders' && <ContainerUserOrders />
                 }
             </div>
         </div>
     )
 }
+
+/* Funcionalidad de cerrar sesion, modificcar datos., eliminar cuenta. */

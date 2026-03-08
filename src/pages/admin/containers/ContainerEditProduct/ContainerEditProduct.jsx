@@ -3,9 +3,9 @@ import { FormProducts } from "../../components/FormProducts/FormProducts"
 import styles from "./ContainerEditProduct.module.css"
 import { useProducts } from "../../../../context/Product/useProducts"
 
-export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
+export const ContainerEditProduct = ({ closeModal, selected }) =>  {
     const { refreshProducts } = useProducts()
-    const [ formData, setFormData ] = useState(selectedProduct)
+    const [ formData, setFormData ] = useState(selected)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -16,7 +16,7 @@ export const ContainerEditProduct = ({ closeModal, selectedProduct }) =>  {
         e.preventDefault()
         try {
             const baseUrl = import.meta.env.VITE_API_URL || ""
-            const res = await fetch(`${baseUrl}/api/products/${selectedProduct._id}`, {
+            const res = await fetch(`${baseUrl}/api/products/${selected._id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

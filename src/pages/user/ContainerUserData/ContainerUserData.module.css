@@ -1,0 +1,89 @@
+.titleUserData{
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 13vh;
+}
+
+.containerData{
+    padding: 0 3vw;
+    display: flex;
+    flex-direction: column;
+}
+    .containerData p, label, input{
+        margin-bottom: 5px;
+    }
+    .subtitleData{
+        font-weight: 700;
+    }
+    .inputData{
+        height: 35px;
+        width: 60%;
+        border-radius: 5px;
+        padding-left: 10px;
+        border: var(--border);
+    }
+.containerButtonData{
+    height: 12vh;
+    width: 15vw;
+    display: flex;
+    align-items: center;
+}
+    .buttonData{
+        width: 90%;
+        height: 50%;
+        border: none;
+        background-color: var(--color);
+        color: var(--colorFont);
+        font-weight: 500;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        transition: background-color .3s ease;
+    }
+        .buttonData:hover{
+            cursor: pointer;
+            background-color: var(--colorHoverButton);
+        }
+    .buttonDelete{
+        background: none;
+        border: none;
+        color: var(--color);
+    }
+        .buttonDelete:hover{
+            cursor: pointer;
+        }
+.containerButtonEdit{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+    .buttonSave{
+        height: 35px;
+        border: none;
+        background-color: var(--color);
+        color: var(--colorFont);
+        font-weight: 500;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        transition: background-color .3s ease;
+        margin-top: 15px;
+    }
+        .buttonSave:hover{
+            cursor: pointer;
+            background-color: var(--colorHoverButton);
+        }
+    .buttonCancel{
+        height: 35px;
+        background: none;
+        margin-top: 15px;
+        font-weight: 500;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        color: var(--color);
+        border: 1px solid var(--color);
+        transition: background-color .5s ease,  color .5s ease;
+    }
+        .buttonCancel:hover{
+            cursor: pointer;
+            background-color: var(--color);
+            color: white;
+        }

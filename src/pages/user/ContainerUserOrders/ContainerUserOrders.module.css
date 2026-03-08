@@ -1,0 +1,35 @@
+.titleUserOrders{
+    font-size: 1.6rem;
+    font-weight: 700;
+    height: 13vh;
+}
+.containerOrder{
+    border: var(--border);
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+    .containerDataOrder{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 30px;
+    }
+        .containerIDStatus{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+    .containerProductsOrder{
+        width: 100%;
+    }
+        .productItemMini{
+            display: flex;
+            width: 100%;
+            padding: 20px 30px;
+            border-top: var(--border);
+        }
+            .imgItemMini{
+                height: 50px;
+                margin-right: 25px;
+            }

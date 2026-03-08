@@ -31,6 +31,7 @@ export function ProductProvider({ children }) {
     const [ categories, setCategories ] = useState([])
     const [ loading, setLoading ] = useState(false)
     const [ error, setError ] = useState(null)
+    const page = filters.page
 
     const getProducts = useCallback(async (filters, append = false) => {
         setLoading(true)
@@ -123,6 +124,7 @@ export function ProductProvider({ children }) {
             products,
             categories,
             filters,
+            page,
             totalPages,
             loading,
             resetFilters,

@@ -5,16 +5,16 @@ import { ContainerProducts } from "../ContainerProducts/ContainerProducts"
 import { ContainerEditProduct } from "../ContainerEditProduct/ContainerEditProduct"
 import { SortSelect } from "../../../../components/SortSelect"
 
-import { useProductModal } from "../../../../hooks/useProductModal"
+import { useModal } from "../../../../hooks/useModal"
 import { useProducts } from "../../../../context/Product/useProducts";
 import { useEffect } from 'react'
 import { Filters } from '../../components/Filters/Filters'
-import { ButtonsPagination } from '../..//components/Pagination/ButtonsPagination'
+import { ButtonsPagination } from '../../components/Pagination/ButtonsPagination'
 
 export const ContainerAdminProducts = () => {
-    const { resetFilters } = useProducts()
+    const { resetFilters, totalPages, updateFilter, page } = useProducts()
 
-    const { isOpen, selectedProduct, openModal, closeModal } = useProductModal()
+    const { isOpen, selected, openModal, closeModal } = useModal()
 
     useEffect(() => {
         resetFilters("admin")
@@ -39,12 +39,12 @@ export const ContainerAdminProducts = () => {
 
                 <ContainerProducts openModal={openModal}/>
 
-                <ButtonsPagination />
+                <ButtonsPagination totalPages={totalPages} prevPage={() => updateFilter("page", page - 1)} nextPage={() => updateFilter("page", page + 1)} page={page}/>
 
                 <ContainerFormAddNewProducts />
                 {
                     isOpen &&
-                    <ContainerEditProduct closeModal={closeModal} selectedProduct={selectedProduct} />
+                    <ContainerEditProduct closeModal={closeModal} selected={selected} />
                 }
             </main>
         </div>

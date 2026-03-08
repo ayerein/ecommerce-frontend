@@ -1,0 +1,10 @@
+.containerPStatus{
+        display: flex;
+    }
+    .statusBadge{
+        margin-left: 5px;
+    }
+    .statusPending { color: #f39c12; }
+    .statusProcess { color: #3498db; }
+    .statusReady { color: #2ecc71; }
+    .statusCancelled { color: #e74c3c; }

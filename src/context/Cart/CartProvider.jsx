@@ -14,17 +14,22 @@ export function CartProvider ({ children }) {
         
             const cartId = localStorage.getItem("cartId")
             
+            const bodyData = {
+                productId,
+                quantity
+            }
+
+            if (cartId && cartId !== "null" && cartId !== "undefined") {
+                bodyData.cartId = cartId
+            }
+
             const res = await fetch(`${baseUrl}/api/cart/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 credentials: "include",
-                body: JSON.stringify({
-                cartId,
-                productId,
-                quantity
-                })
+                body: JSON.stringify(bodyData)
             })
 
             if (!res.ok) throw new Error("Error al añadir al carrito");

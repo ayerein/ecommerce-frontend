@@ -10,4 +10,21 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 2vh;
 }
+    .btnOptionsAdmin{
+        background: none;
+        border-radius: 15px;
+        border: var(--border);
+        color: var(--colorPlaceholder);
+        height: 25px;
+        width: 100px;
+        margin: 0 10px;
+    }
+    .btnOptionsAdmin:hover{
+        cursor: pointer;
+    }
+    .active{
+        border: 1px solid var(--color);
+        color: var(--color);
+    }

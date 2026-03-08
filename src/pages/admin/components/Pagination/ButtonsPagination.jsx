@@ -1,16 +1,13 @@
 
-import { useProducts } from '../../../../context/Product/useProducts'
 import styles from './ButtonsPagination.module.css'
 
-export const ButtonsPagination = () => {
-    const { totalPages, updateFilter, filters } = useProducts()
-    const page = filters.page
+export const ButtonsPagination = ({ totalPages, prevPage, nextPage, page }) => {
 
     return(
         <div className={styles.containerButtons}>
             <button 
                 disabled={page === 1} 
-                onClick={() => updateFilter("page", page - 1)}
+                onClick={prevPage}
             >
                 &lt;
             </button>
@@ -19,7 +16,7 @@ export const ButtonsPagination = () => {
 
             <button 
                 disabled={page === totalPages} 
-                onClick={() => updateFilter("page", page + 1)}
+                onClick={nextPage}
             >
                 &gt;
             </button>

@@ -6,7 +6,7 @@ import { useState } from "react"
 import { ContainerOrders } from "./containers/ContainerOrders/ContainerOrders.jsx"
 
 export const AdminPage = () => {
-    const [ optionAdmin, setOptionAdmin ] = useState('Products')
+    const [ optionAdmin, setOptionAdmin ] = useState(false)
 
     return(
         <div className={styles.containerAdminPage}>
@@ -14,14 +14,14 @@ export const AdminPage = () => {
                 <Search />
             </div>
             <div className={styles.containerOptionsAdmin}>
-                <button type="button" onClick={()=> setOptionAdmin('Orders')}>Ordenes</button>
-                <button type="button" onClick={()=> setOptionAdmin('Products')}>Productos</button>
+                <button type="button" onClick={()=> setOptionAdmin(true)} className={`${styles.btnOptionsAdmin} ${optionAdmin ? styles.active : ''}`}>Ordenes</button>
+                <button type="button" onClick={()=> setOptionAdmin(false)} className={`${styles.btnOptionsAdmin} ${optionAdmin ? '' : styles.active}`}>Productos</button>
             </div>
             {
-                optionAdmin === "Products" ?
-                <ContainerAdminProducts/>
-                :
+                optionAdmin ?
                 <ContainerOrders />
+                :
+                <ContainerAdminProducts/>
             }
         </div>
     )

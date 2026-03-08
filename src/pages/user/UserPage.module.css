@@ -1,22 +1,43 @@
+.errorContainerUser{
+    height: 80vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
 .containerUserPage{
     height: 60vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 20vw 80vw;
 }
-    .pTitleUserPage{
-        width: 50%;
-        margin-bottom: 3vh;
-        font-size: 1.4rem;
+    .containerOptions{
+        display: flex;
+        flex-direction: column;
+        padding: 8vh 2vw;
     }
-    .containerData{
-        box-shadow: var(--box-shadow);
-        height: 60%;
-        width: 50%;
-        padding: 5vh 5vw;
-    }
-        .containerData p{
-            line-height: 1.5rem;
+        .pTitleName{
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding-left: 10px;
+            height: 13vh;
         }
+        .buttonOptions{
+            background: none;
+            border: none;
+            height: 40px;
+            text-align: left;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid transparent;
+            font-size: .9rem;
+        }
+            .buttonOptions:hover{
+                cursor: pointer;
+            }
+        .activeButton{
+            border-left: 3px solid var(--color);
+        }
+
+    .containerData{
+        padding: 8vh 2vw;
+    }

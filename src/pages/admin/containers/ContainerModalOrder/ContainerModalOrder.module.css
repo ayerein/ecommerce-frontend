@@ -1,0 +1,114 @@
+.containerModal{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+    .containerCloseModal{
+        width: 90%;
+        border-bottom: var(--border);
+        border-top: var(--border);
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+        .close{
+            display: flex;
+            align-items: center;
+        }
+            .close:hover{
+                cursor: pointer;
+            }
+        .imgClose{
+            height: 15px;
+            margin-right: 5px;
+        }
+    .order{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+        .dataUserOrder{
+            width: 90%;
+            padding: 15px 0;
+            border-bottom: var(--border);
+        }
+            
+        .containerProductsOrder{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            .containerProd{
+                width: 90%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 5vw;
+                border-bottom: var(--border);
+            }
+                .containerProd:hover{
+                    cursor: pointer;
+                    background-color: var(--backgroundSelection);
+                }   
+                .imgProd{
+                    height: 80px;
+                    width: 80px;
+                }
+        .containerTotal{
+            width: 80%;
+            text-align: end;
+            margin: 15px 0;
+        }
+        .containerStatus{
+            height: 15vh;
+            width: 90%;
+            display: grid;
+            place-items: center;
+        }
+            .buttonStatus{
+                height: 60%;
+                width: 30%;
+                background: none;
+                border: none;
+                box-shadow: var(--box-shadow);
+                border-radius: 5px;
+            }
+                .buttonStatus:hover{
+                    cursor: pointer;
+                    box-shadow: var(--box-shadow-hover);
+                }
+
+    .overlayModalDetail{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.65);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 200;
+        backdrop-filter: blur(4px);
+    }
+        .containerModalDetail{
+            background-color: white;
+            height: 60%;
+            width: 60%;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+            .titleProduct{
+                font-size: 1.6rem;
+                font-weight: 500;
+            }
+            .imgProdModal{
+                height: 200px;
+                margin-bottom: 25px;
+            }
