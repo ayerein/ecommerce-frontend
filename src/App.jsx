@@ -15,6 +15,7 @@ import { UserProvider } from "./context/User/UserProvider"
 import { UserPage } from "./pages/user/UserPage"
 import { ProtectedRoute } from "./components/auth/ProtectedRoute"
 import { Unauthorized } from "./pages/unauthorized/Unauthorized"
+import { ResetPasswordPage } from "./pages/auth/ResetPasswordPage"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route element={<PublicLayout />}> 
               <Route path="/" element={<ShopPage />} />
               <Route path="/auth" element={<AuthPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/user" element={<UserPage />} />
               <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />

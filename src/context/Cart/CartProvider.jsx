@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useMemo } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { CartContext } from "./cart.context"
 import { useProducts } from "../Product/useProducts"
 
@@ -109,15 +109,6 @@ export function CartProvider ({ children }) {
         }
     }, [refreshProducts])
 
-    const totalPrice = useMemo(() => {
-        return cart?.items.reduce((acc, item) => {
-            return acc + (item.product.precio_producto * item.quantity)
-        }, 0)
-    }, [cart])
-
-    const totalUnits = useMemo(() => {
-        return cart?.items.reduce((acc, item) => acc + item.quantity, 0)
-    }, [cart])
 
     useEffect(() => {
         const cartId = localStorage.getItem("cartId")
@@ -159,8 +150,8 @@ export function CartProvider ({ children }) {
             deleteProduct,
             clearCart,
             createOrder,
-            totalPrice,
-            totalUnits
+            totalPrice: cart?.totalPrice || 0,
+            totalUnits: cart?.totalUnits || 0
         }}
         >
         {children}

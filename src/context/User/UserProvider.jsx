@@ -109,6 +109,55 @@ export function UserProvider({ children }) {
         }
     }, [])
 
+    const forgotPassword = useCallback(async (email) => {
+        try {
+            const baseUrl = import.meta.env.VITE_API_URL
+            const res = await fetch(`${baseUrl}/api/sessions/forgot-password`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email.toLowerCase().trim() }),
+            })
+
+            const data = await res.json()
+
+            if (res.ok) {
+                return { success: true }
+            } else {
+                return { 
+                    success: false, 
+                    message: data.message || "No se pudo enviar el correo de recuperación." 
+                }
+            }
+        } catch (error) {
+            console.error("Error en forgotPassword:", error)
+            return { 
+                success: false, 
+                message: "Error de conexión con el servidor." 
+            }
+        }
+    }, [])
+
+    const resetPassword = useCallback(async (token, password) => {
+        try {
+            const baseUrl = import.meta.env.VITE_API_URL
+            const res = await fetch(`${baseUrl}/api/sessions/reset-password`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ token, password }),
+            })
+
+            const data = await res.json()
+
+            if (res.ok) {
+                return { success: true }
+            } else {
+                return { success: false, message: data.message }
+            }
+        } catch (error) {
+            return { success: false, message: error }
+        }
+    }, [])
+
     const deleteAccount = useCallback(async () => {
         const confirmDelete = window.confirm(
             "¿Estás seguro de que quieres eliminar tu cuenta? Esta acción borrará tu carrito y es irreversible."
@@ -147,6 +196,8 @@ export function UserProvider({ children }) {
             user, 
             setUser,
             register,
+            forgotPassword,
+            resetPassword,
             login, 
             logout, 
             deleteAccount,

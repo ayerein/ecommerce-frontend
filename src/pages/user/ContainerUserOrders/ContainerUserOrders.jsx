@@ -4,7 +4,6 @@ import { useOrders } from '../../../hooks/useOrders'
 
 export const ContainerUserOrders = () => {
     const { orders} = useOrders()
-    console.log(orders)
     return(
         <div className={styles.containerUserOrders}>
             <p className={styles.titleUserOrders}>Mis ordenes</p>

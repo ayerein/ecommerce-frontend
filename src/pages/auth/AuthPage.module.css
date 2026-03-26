@@ -28,3 +28,86 @@
                 cursor: pointer;
                 color: var(--color);
             }
+        
+        .successBox{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 20vh;
+        }
+        .btnBack{
+            width: 50%;
+            height: 30%;
+            border: none;
+            background-color: var(--color);
+            color: var(--colorFont);
+            font-weight: 500;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color .3s ease;
+        }
+            .btnBack:hover{
+                cursor: pointer;
+                background-color: var(--colorHoverButton);
+            }
+
+
+.formAuth{
+    display: flex;
+    flex-direction: column;
+}
+    .formAuth input{
+        width: 40vw;
+        height: 35px;
+        padding: 0 10px;
+        border: var(--border);
+        border-radius: 10px;
+    }
+        .formAuth input:focus-visible {
+            outline: none;
+        }
+    .formAuth label{
+        font-weight: 600;
+        height: 30px;
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 5px;
+    }
+    .btnAuth{
+        margin-top: 20px;
+        height: 35px;
+        border: none;
+        background: var(--color);
+        color: var(--colorFont);
+        border-radius: 10px;
+        font-size: 1.1rem;
+        transition: background-color .3s ease;
+    }
+        .btnAuth:hover{
+            cursor: pointer;
+            background: var(--colorHoverButton);
+        }
+    
+
+    .containerSuccessPassword{
+        height: 25vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .btnSuccess{
+        height: 35px;
+        padding: 0 15px;
+        border: none;
+        background: var(--color);
+        color: var(--colorFont);
+        border-radius: 10px;
+        font-size: 1.1rem;
+        transition: background-color .3s ease;
+    }
+        .btnSuccess:hover{
+            cursor: pointer;
+            background: var(--colorHoverButton);
+        }

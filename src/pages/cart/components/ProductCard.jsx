@@ -4,7 +4,7 @@ import iconTrash from '../../../assets/iconTrash.png'
 import { useCart } from "../../../context/Cart/useCart"
 
 export const ProductCard = ({ quantity, id, nombre, precio, stock, img }) => {
-    const { deleteProduct,  } = useCart()
+    const { deleteProduct } = useCart()
 
     return(
         <div  className={styles.productCard}>

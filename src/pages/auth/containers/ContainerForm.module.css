@@ -21,6 +21,19 @@
         margin-bottom: 5px;
     }
 
+    .buttonForgot{
+        background: none;
+        border: none;
+        text-align: left;
+        margin-top: 5px;
+        width: fit-content;
+        transition: color .3s ease;
+    }
+        .buttonForgot:hover{
+            cursor: pointer;
+            color: var(--color);
+        }
+
     .btnAuth{
         margin-top: 20px;
         height: 35px;
